@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Generate Apex Controller for LWC</masterLabel>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <description>Generates an Apex controller for a user story when a LWC is selected in the Sacral application.</description>
+    <aura:component>
+        <aura:attribute name="lwcName" type="String" default=""/>
+        <aura:attribute name="apexControllerName" type="String" default=""/>
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+        <div class="slds-grid slds-wrap slds-grid_align-center slds-p-around_x-small">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3 slds-m-bottom_small">
+                <label class="slds-form-element__label" for="text-input-01">LWC Name:</label>
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                    <svg class="slds-input__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#text_default"></use>
+                    </svg>
+                    <input type="text" id="text-input-01" class="slds-input" value="{!v.lwcName}" aura:id="lwcName" />
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3 slds-m-bottom_small">
+                <label class="slds-form-element__label" for="text-input-02">Apex Controller Name:</label>
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                    <svg class="slds-input__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#text_default"></use>
+                    </svg>
+                    <input type="text" id="text-input-02" class="slds-input" value="{!v.apexControllerName}" aura:id="apexControllerName" />
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                <lightning:button label="Generate Apex Controller" class="slds-m-top_small" variant="brand" onclick="{!c.generateApexController}"/>
+            </div>
+        </div>
+    </aura:component>
+</AuraDefinitionBundle>
